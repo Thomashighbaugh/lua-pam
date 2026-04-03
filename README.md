@@ -8,7 +8,40 @@ cd build
 make
 ```
 
-## Installation through package manager
+## Installation
+
+### Using Nix Flakes (Recommended)
+
+If you have Nix with flakes enabled, you can build and install this project directly:
+
+```bash
+# Build the project
+nix build github:user/lua-pam  # Replace with actual repository URL
+
+# Or build locally
+nix build .
+
+# Enter development shell with all dependencies
+nix develop
+
+# Test the build
+nix run .#test
+```
+
+The flake provides several build targets:
+- `lua-pam` (default) - Built with LuaJIT support
+- `lua-pam-lua` - Built with standard Lua support
+
+### Development with Nix
+
+```bash
+# Enter development shell (includes LuaJIT, CMake, GDB, etc.)
+nix develop
+
+# Or use direnv for automatic environment loading
+echo "use flake" > .envrc
+direnv allow
+```
 
 ### Arch Linux
 
